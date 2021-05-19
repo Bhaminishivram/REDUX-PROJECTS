@@ -9,6 +9,11 @@ const myReducer = (state  = initialState, action ) => {
  if(action.type ==='ADD') 
  {
      newState.age += 1; 
+ }  
+
+ if(action.type ==='SUBSTRACT') 
+ {
+     newState.age -= 1; 
  } 
  return newState; 
 
@@ -18,8 +23,10 @@ const myReducer = (state  = initialState, action ) => {
 
 const store = createStore(myReducer); 
 
+console.log('initial state' + JSON.stringify(store.getState()));
 store.dispatch({ type:'ADD'}); 
-
-console.log(store.getState());
+console.log('after add' +JSON.stringify(store.getState())); 
+store.dispatch({type:'SUBSTRACT'});
+console.log( 'after substract' +JSON.stringify(store.getState()));
 
 
