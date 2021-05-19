@@ -21,12 +21,26 @@ const myReducer = (state  = initialState, action ) => {
 
 
 
-const store = createStore(myReducer); 
+const store = createStore(myReducer);  
 
-console.log('initial state' + JSON.stringify(store.getState()));
+  store.subscribe (() => {
+    console.log('state changed' + JSON.stringify(store.getState())); 
+})
+
+
+
 store.dispatch({ type:'ADD'}); 
-console.log('after add' +JSON.stringify(store.getState())); 
+//console.log('after add' +JSON.stringify(store.getState())); 
+
 store.dispatch({type:'SUBSTRACT'});
-console.log( 'after substract' +JSON.stringify(store.getState()));
+//console.log( 'after substract' +JSON.stringify(store.getState()));
 
-
+//keep adding store .dispatch  
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({ type:'ADD'}); 
+store.dispatch({type:'SUBSTRACT'});
